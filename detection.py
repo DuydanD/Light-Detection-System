@@ -7,7 +7,7 @@ import cv2
 model = YOLO("yolo11n.pt")
 
 # Connects to bridge
-b = Bridge('192.168.1.127')
+b = Bridge('IP')
 b.connect()
 
 def set_light_on():
@@ -56,5 +56,3 @@ while cap.isOpened:
 
 cap.release()
 cv2.destroyAllWindows()
-
-cv2.add()
