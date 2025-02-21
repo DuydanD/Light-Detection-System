@@ -8,7 +8,7 @@ import cv2
 model = YOLO("yolo11n.pt")
 
 # Connects to bridge
-b = Bridge('192.168.1.127')
+b = Bridge('')
 b.connect()
 
 # Gets time
