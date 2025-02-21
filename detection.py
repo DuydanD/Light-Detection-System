@@ -1,17 +1,29 @@
 from ultralytics import YOLO
 from PIL import Image
 from phue import Bridge
+import time
 import cv2
 
 # Load a Model
 model = YOLO("yolo11n.pt")
 
 # Connects to bridge
-b = Bridge('IP')
+b = Bridge('192.168.1.127')
 b.connect()
 
+# Gets time
+time_now = time.strftime('%H:%M')
+
 def set_light_on():
+
     command = {'on' : True , 'bri' : 254}
+
+    if time_now >= '10:00':
+        command = {'on' : True , 'bri' : 254, 'hue' : 41432}
+    
+    elif time_now >= '20:00' or time_now >= '00:00':
+        command = {'on' : True , 'bri' : 77, 'hue' : 8417}
+
     b.set_light('Office Light', command)
 
 def set_light_off():
