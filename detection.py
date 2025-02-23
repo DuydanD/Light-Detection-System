@@ -1,14 +1,18 @@
 from ultralytics import YOLO
 from PIL import Image
 from phue import Bridge
+from dotenv import load_dotenv
 import time
 import cv2
+import os
 
 # Load a Model
 model = YOLO("yolo11n.pt")
 
+IP = os.getenv('IP')
+
 # Connects to bridge
-b = Bridge('')
+b = Bridge(IP)
 b.connect()
 
 # Gets time
